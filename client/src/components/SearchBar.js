@@ -5,9 +5,9 @@ export const SearchBar = () => {
   return (
     <div className={classes.container}>
       <h1 className='display-6'>What do you want to bookmark?</h1>
-      <div className='d-grid gap-3 mt-5'>
+      <div className='d-grid gap-3 mt-1'>
         <input type='text' className='form-control' placeholder='Enter search keyword...' />
-        <button className='btn btn-warning'>Search</button>
+        <button className='btn btn-warning'>Add to saved list</button>
       </div>
     </div>
   );
