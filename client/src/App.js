@@ -2,14 +2,15 @@ import classes from './App.module.css';
 import {SearchBar} from './components/SearchBar';
 import {KeywordList} from './components/KeywordList';
 import {VideoList} from './components/VideoList';
+import {GlobalProvider} from './context/GlobalState';
 
 function App () {
   return (
-    <div>
+    <GlobalProvider>
       <SearchBar />
       <KeywordList />
       <VideoList />
-    </div>
+    </GlobalProvider>
   );
 }
 
