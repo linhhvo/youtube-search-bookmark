@@ -4,15 +4,18 @@
 	justify-content: center;
 }
 
-.list li {
+.list button {
 	border: 1px solid whitesmoke;
 	border-radius: 100px;
 	padding: 5px 9px;
-	margin: 0 10px;
+	margin: 0 10px 20px;
+	background-color: transparent;
+	color: antiquewhite;
 	cursor: pointer;
+	outline: none;
 }
 
-.list li:hover {
-	background-color: rgb(223, 223, 191);
+.list button:hover {
+	background-color: antiquewhite;
 	color: black;
 }

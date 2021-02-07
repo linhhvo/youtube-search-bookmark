@@ -5,3 +5,7 @@
 	width: 40vw;
 	margin: 20px auto auto;
 }
+
+.container button {
+	outline: none;
+}

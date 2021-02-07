@@ -3,15 +3,22 @@ import classes from './KeywordList.module.css';
 import {GlobalContext} from '../context/GlobalState';
 
 export const KeywordList = () => {
-  const {savedItems} = useContext(GlobalContext);
+  const {savedItems, displayActiveItem} = useContext(GlobalContext);
+
+  const keywordClickHandler = event => {
+
+    const selectedItem = savedItems.find(item => item.keyword === event.target.innerText);
+
+    displayActiveItem(selectedItem);
+  };
 
   return (
     <div className='mt-4'>
       <p>Click on keyword to see the latest videos</p>
-      <ul className={classes.list}>
+      <div className={classes.list}>
         {savedItems.map(item =>
-          <li key={item.id}>{item.keyword}</li>)}
-      </ul>
+          <button onClick={keywordClickHandler} key={item.id}>{item.keyword}</button>)}
+      </div>
     </div>
   );
 };

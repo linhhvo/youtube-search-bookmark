@@ -4,10 +4,11 @@ const uuid = require('uuid');
 
 const initialState = {
   savedItems: [
-    {id: uuid.v4(), keyword: 'IU', videoId: ['0-q1KafFCLU', 'nM0xDI5R50E', 'd9IxdwEFk1c', 'TgOu00Mf3kI', 'D1PvIWdJ8xo']},
-    {id: uuid.v4(), keyword: 'BTOB', videoId: ['cXcUXWL1mJA', '__BFUf_nJl0', 'wDkjWSt3HOM', 'FmuHZa6DQOc', 'JBEdgsea9sM']}
+    {id: uuid.v4(), keyword: 'IU', videoIds: ['0-q1KafFCLU', 'nM0xDI5R50E', 'd9IxdwEFk1c', 'TgOu00Mf3kI', 'D1PvIWdJ8xo']},
+    {id: uuid.v4(), keyword: 'BTOB', videoIds: ['cXcUXWL1mJA', '__BFUf_nJl0', 'wDkjWSt3HOM', 'FmuHZa6DQOc', 'JBEdgsea9sM']}
   ],
-  message: ''
+  message: '',
+  activeItem: {}
 };
 
 export const GlobalContext = createContext(initialState);
@@ -19,6 +20,13 @@ export const GlobalProvider = ({children}) => {
   function addKeyword (item) {
     dispatch({
       type: 'ADD_KEYWORD',
+      payload: item
+    });
+  }
+
+  function displayActiveItem (item) {
+    dispatch({
+      type: 'DISPLAY_VIDEOS',
       payload: item
     });
   }
@@ -35,8 +43,10 @@ export const GlobalProvider = ({children}) => {
       value={{
         savedItems: state.savedItems,
         message: state.message,
+        activeItem: state.activeItem,
         addKeyword,
-        notification
+        notification,
+        displayActiveItem
       }}>
       {children}
     </GlobalContext.Provider>
