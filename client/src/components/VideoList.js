@@ -4,9 +4,9 @@ import {Video} from './Video';
 import {GlobalContext} from '../context/GlobalState';
 
 export const VideoList = () => {
-  const {activeItem} = useContext(GlobalContext);
+  const {displayedItem} = useContext(GlobalContext);
 
-  let videos = Object.keys(activeItem).length !== 0 ? <Video key={activeItem.id} videoIds={activeItem.videoIds} /> : null;
+  let videos = Object.keys(displayedItem).length !== 0 ? <Video key={displayedItem.keyword} videoIds={displayedItem.videoIds} /> : null;
 
   return (
     <div>

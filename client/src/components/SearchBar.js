@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {GlobalContext} from '../context/GlobalState';
+import {v4 as uuidv4} from 'uuid';
 import classes from './SearchBar.module.css';
 
 export const SearchBar = () => {
@@ -14,8 +15,8 @@ export const SearchBar = () => {
 
     if (foundIndex === -1 && keyword !== '') {
       const newItem = {
-        keyword: keyword,
-        videoId: [],
+        id: uuidv4(),
+        keyword: keyword
       };
 
       addKeyword(newItem);

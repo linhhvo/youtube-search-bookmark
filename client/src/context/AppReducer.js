@@ -8,12 +8,17 @@ export default (state, action) => {
     case 'DISPLAY_VIDEOS':
       return {
         ...state,
-        activeItem: action.payload
+        displayedItem: action.payload
       };
     case 'PRINT_NOTIFICATION':
       return {
         ...state,
         message: action.payload
+      };
+    case 'VIDEO_ERROR':
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;

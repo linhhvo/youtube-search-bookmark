@@ -1,0 +1,30 @@
+{
+	"name": "youtube-search-bookmark",
+	"description": "Backend for youtube bookmark app",
+	"version": "1.0.0",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server",
+		"server": "nodemon server",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/linhhvo/youtube-search-bookmark.git"
+	},
+	"author": "Linh",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.21.1",
+		"concurrently": "^5.3.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"googleapis": "^67.0.0",
+		"nodemon": "^2.0.7"
+	},
+	"bugs": {
+		"url": "https://github.com/linhhvo/youtube-search-bookmark/issues"
+	},
+	"homepage": "https://github.com/linhhvo/youtube-search-bookmark#readme"
+}

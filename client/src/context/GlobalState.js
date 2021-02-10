@@ -1,14 +1,12 @@
 import React, {createContext, useReducer} from 'react';
 import AppReducer from './AppReducer';
-const uuid = require('uuid');
+import axios from 'axios';
+
 
 const initialState = {
-  savedItems: [
-    {id: uuid.v4(), keyword: 'IU', videoIds: ['0-q1KafFCLU', 'nM0xDI5R50E', 'd9IxdwEFk1c', 'TgOu00Mf3kI', 'D1PvIWdJ8xo']},
-    {id: uuid.v4(), keyword: 'BTOB', videoIds: ['cXcUXWL1mJA', '__BFUf_nJl0', 'wDkjWSt3HOM', 'FmuHZa6DQOc', 'JBEdgsea9sM']}
-  ],
+  savedItems: [],
   message: '',
-  activeItem: {}
+  displayedItem: {}
 };
 
 export const GlobalContext = createContext(initialState);
@@ -17,6 +15,8 @@ export const GlobalProvider = ({children}) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Actions
+
+  // Add entered keyword to the saved keyword list
   function addKeyword (item) {
     dispatch({
       type: 'ADD_KEYWORD',
@@ -24,13 +24,30 @@ export const GlobalProvider = ({children}) => {
     });
   }
 
-  function displayActiveItem (item) {
-    dispatch({
-      type: 'DISPLAY_VIDEOS',
-      payload: item
-    });
+  // Display videos of the selected keyword
+  async function displayActiveItem (keyword) {
+    try {
+      // Trigger get videos from back end
+      const response = await axios.get(`/${keyword}`);
+
+      dispatch({
+        type: 'DISPLAY_VIDEOS',
+        payload: {
+          keyword: keyword,
+          videoIds: response.data
+        }
+      });
+
+    } catch (error) {
+      dispatch({
+        type: 'VIDEO_ERROR',
+        payload: error.response.data.error
+      });
+    }
   }
 
+  // Print message when add keyword to the saved list
+  // Might replace this with database model validation
   function notification (message) {
     dispatch({
       type: 'PRINT_NOTIFICATION',
