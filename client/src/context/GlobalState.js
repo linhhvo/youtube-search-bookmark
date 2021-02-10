@@ -34,7 +34,7 @@ export const GlobalProvider = ({children}) => {
         type: 'DISPLAY_VIDEOS',
         payload: {
           keyword: keyword,
-          videoIds: response.data
+          videoIds: response.data.data
         }
       });
 
@@ -60,7 +60,7 @@ export const GlobalProvider = ({children}) => {
       value={{
         savedItems: state.savedItems,
         message: state.message,
-        activeItem: state.activeItem,
+        displayedItem: state.displayedItem,
         addKeyword,
         notification,
         displayActiveItem
