@@ -10,7 +10,7 @@ exports.getVideos = async (req, res, next) => {
       key: process.env.YOUTUBE_TOKEN,
       part: 'snippet',
       q: req.params.keyword,
-      maxResults: 10,
+      maxResults: 6,
       order: 'viewCount',
       type: 'video'
     });

@@ -12,7 +12,6 @@ export const SearchBar = () => {
 
     const foundIndex = savedItems.findIndex(item => item.keyword.toLowerCase() === keyword.toLowerCase());
 
-
     if (foundIndex === -1 && keyword !== '') {
       const newItem = {
         id: uuidv4(),

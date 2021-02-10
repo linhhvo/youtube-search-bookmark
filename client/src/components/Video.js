@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import classes from './Video.module.css';
 
 export const Video = (props) => {
