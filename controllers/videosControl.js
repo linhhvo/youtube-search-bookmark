@@ -39,6 +39,26 @@ exports.getVideos = async (req, res, next) => {
   }
 };
 
+
+// Retrieve keywords from the database
+exports.getKeywordList = async (req, res, next) => {
+  try {
+    const keywords = await Keyword.find();
+
+    return res.status(200).json({
+      success: true,
+      data: keywords
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: 'Server Error'
+    });
+  }
+};
+
+
 // Save keyword to the database
 exports.addKeyword = async (req, res, next) => {
   try {

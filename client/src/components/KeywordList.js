@@ -1,9 +1,14 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import classes from './KeywordList.module.css';
 import {GlobalContext} from '../context/GlobalState';
 
 export const KeywordList = () => {
-  const {savedItems, displayActiveItem} = useContext(GlobalContext);
+  const {savedItems, displayActiveItem, getKeywordList} = useContext(GlobalContext);
+
+  useEffect(() => {
+    getKeywordList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const keywordClickHandler = event => {
 

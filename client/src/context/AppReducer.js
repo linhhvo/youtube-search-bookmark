@@ -1,5 +1,10 @@
 export default (state, action) => {
   switch (action.type) {
+    case 'GET_KEYWORDS':
+      return {
+        ...state,
+        savedItems: action.payload
+      };
     case 'ADD_KEYWORD':
       return {
         ...state,
