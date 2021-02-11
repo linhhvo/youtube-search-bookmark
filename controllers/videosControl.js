@@ -1,5 +1,6 @@
 const {google} = require('googleapis');
 const dotenv = require('dotenv');
+const Keyword = require('../models/Keyword');
 
 // Get global env variable
 dotenv.config({path: './config/config.env'});
@@ -41,8 +42,37 @@ exports.getVideos = async (req, res, next) => {
 // Save keyword to the database
 exports.addKeyword = async (req, res, next) => {
   try {
+    const existingKeyword = await Keyword.find(req.body);
+
+    if (existingKeyword.length !== 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'This keyword is already on the list.'
+      });
+    }
+
+    const keyword = await Keyword.create(req.body);
+
+    return res.status(201).json({
+      success: true,
+      data: keyword,
+      message: 'Keyword saved!'
+    });
 
   } catch (error) {
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(value => value.message);
 
+      return res.status(400).json({
+        success: false,
+        message: messages
+      });
+
+    } else {
+      return res.status(500).json({
+        success: false,
+        error: 'Server Error'
+      });
+    }
   }
 };

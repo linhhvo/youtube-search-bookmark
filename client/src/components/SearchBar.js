@@ -4,28 +4,29 @@ import {v4 as uuidv4} from 'uuid';
 import classes from './SearchBar.module.css';
 
 export const SearchBar = () => {
-  const {savedItems, message, addKeyword, notification} = useContext(GlobalContext);
+  const {message, addKeyword} = useContext(GlobalContext);
   const [keyword, setKeyword] = useState('');
 
   const addItem = event => {
     event.preventDefault();
 
-    const foundIndex = savedItems.findIndex(item => item.keyword.toLowerCase() === keyword.toLowerCase());
+    // const foundIndex = savedItems.findIndex(item => item.keyword.toLowerCase() === keyword.toLowerCase());
 
-    if (foundIndex === -1 && keyword !== '') {
-      const newItem = {
-        id: uuidv4(),
-        keyword: keyword
-      };
+    // if (foundIndex === -1 && keyword !== '') {
+    //   const newItem = keyword;
 
-      addKeyword(newItem);
+    //   addKeyword(newItem);
 
-      notification('Keyword added!');
-    } else if (keyword === '') {
-      notification('Keyword can\'t be empty.');
-    } else {
-      notification('Keyword already existed');
-    }
+    //   notification('Keyword added!');
+    // } else if (keyword === '') {
+    //   notification('Keyword can\'t be empty.');
+    // } else {
+    //   notification('Keyword already existed');
+    // }
+
+    const newItem = {keyword};
+
+    addKeyword(newItem);
   };
   return (
     <div className={classes.container}>

@@ -17,7 +17,7 @@ export const KeywordList = () => {
       <p>Click on keyword to see the latest videos</p>
       <div className={classes.list}>
         {savedItems.map(item =>
-          <button onClick={keywordClickHandler} key={item.id}>{item.keyword}</button>)}
+          <button onClick={keywordClickHandler} key={item._id}>{item.keyword}</button>)}
       </div>
     </div>
   );

@@ -1,8 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const connectDB = require('./config/database');
 
 // Get global env variable
 dotenv.config({path: './config/config.env'});
+
+// Connect database
+connectDB();
 
 // Set up routes
 const videos = require('./routes/videos');

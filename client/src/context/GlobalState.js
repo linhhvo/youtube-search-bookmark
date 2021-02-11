@@ -17,11 +17,28 @@ export const GlobalProvider = ({children}) => {
   // Actions
 
   // Add entered keyword to the saved keyword list
-  function addKeyword (item) {
-    dispatch({
-      type: 'ADD_KEYWORD',
-      payload: item
-    });
+  async function addKeyword (keyword) {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.post('/', keyword, config);
+
+      dispatch({
+        type: 'ADD_KEYWORD',
+        payload: res.data
+      });
+
+    } catch (error) {
+      dispatch({
+        type: 'VIDEO_ERROR',
+        payload: error.response.data
+      });
+
+    }
   }
 
   // Display videos of the selected keyword
@@ -48,12 +65,12 @@ export const GlobalProvider = ({children}) => {
 
   // Print message when add keyword to the saved list
   // Might replace this with database model validation
-  function notification (message) {
-    dispatch({
-      type: 'PRINT_NOTIFICATION',
-      payload: message
-    });
-  }
+  // function notification (message) {
+  //   dispatch({
+  //     type: 'PRINT_NOTIFICATION',
+  //     payload: message
+  //   });
+  // }
 
   return (
     <GlobalContext.Provider
@@ -62,7 +79,7 @@ export const GlobalProvider = ({children}) => {
         message: state.message,
         displayedItem: state.displayedItem,
         addKeyword,
-        notification,
+        // notification,
         displayActiveItem
       }}>
       {children}
