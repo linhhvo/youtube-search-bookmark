@@ -1,15 +1,13 @@
-import React from 'react';
-import classes from './Keyword.module.css';
+import React, {useContext} from 'react';
 import {GlobalContext} from '../context/GlobalState';
 
 
+export const Keyword = (props) => {
+  const {displayActiveItem} = useContext(GlobalContext);
 
-export const Keyword = () => {
-  const {savedItems, displayActiveItem, getKeywordList} = useContext(GlobalContext);
+  const keywordClickHandler = event => displayActiveItem(event.target.innerText);
 
   return (
-    <div>
-
-    </div>
+    <button onClick={keywordClickHandler}>{props.keyword}</button>
   );
 };

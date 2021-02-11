@@ -21,7 +21,6 @@ export const GlobalProvider = ({children}) => {
     try {
       const response = await axios.get('/api/videos');
 
-      console.log(response.data);
       dispatch({
         type: 'GET_KEYWORDS',
         payload: response.data.data
