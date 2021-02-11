@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 // Get global env variable
 dotenv.config({path: './config/config.env'});
 
+// Get videos from Youtube API
 exports.getVideos = async (req, res, next) => {
   try {
     const {data} = await google.youtube('v3').search.list({
@@ -34,5 +35,14 @@ exports.getVideos = async (req, res, next) => {
       sucess: false,
       error: 'Server Error'
     });
+  }
+};
+
+// Save keyword to the database
+exports.addKeyword = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+
   }
 };
