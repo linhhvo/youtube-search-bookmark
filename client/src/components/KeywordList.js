@@ -7,8 +7,6 @@ export const KeywordList = () => {
 
   const keywordClickHandler = event => {
 
-    // const selectedItem = savedItems.find(item => item.keyword === event.target.innerText);
-
     displayActiveItem(event.target.innerText);
   };
 

@@ -11,11 +11,6 @@ export default (state, action) => {
         ...state,
         displayedItem: action.payload
       };
-    // case 'PRINT_NOTIFICATION':
-    //   return {
-    //     ...state,
-    //     message: action.payload
-    //   };
     case 'VIDEO_ERROR':
       return {
         ...state,

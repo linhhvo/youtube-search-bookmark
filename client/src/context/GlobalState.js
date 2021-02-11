@@ -63,15 +63,6 @@ export const GlobalProvider = ({children}) => {
     }
   }
 
-  // Print message when add keyword to the saved list
-  // Might replace this with database model validation
-  // function notification (message) {
-  //   dispatch({
-  //     type: 'PRINT_NOTIFICATION',
-  //     payload: message
-  //   });
-  // }
-
   return (
     <GlobalContext.Provider
       value={{
@@ -79,7 +70,6 @@ export const GlobalProvider = ({children}) => {
         message: state.message,
         displayedItem: state.displayedItem,
         addKeyword,
-        // notification,
         displayActiveItem
       }}>
       {children}

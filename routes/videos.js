@@ -6,6 +6,7 @@ router.route('/:keyword')
   .get(getVideos);
 
 router.route('/')
+  // .get(getKeywordList)
   .post(addKeyword);
 
 module.exports = router;

@@ -10,20 +10,6 @@ export const SearchBar = () => {
   const addItem = event => {
     event.preventDefault();
 
-    // const foundIndex = savedItems.findIndex(item => item.keyword.toLowerCase() === keyword.toLowerCase());
-
-    // if (foundIndex === -1 && keyword !== '') {
-    //   const newItem = keyword;
-
-    //   addKeyword(newItem);
-
-    //   notification('Keyword added!');
-    // } else if (keyword === '') {
-    //   notification('Keyword can\'t be empty.');
-    // } else {
-    //   notification('Keyword already existed');
-    // }
-
     const newItem = {keyword};
 
     addKeyword(newItem);
