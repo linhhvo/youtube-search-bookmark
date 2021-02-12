@@ -4,7 +4,7 @@ import {GlobalContext} from '../context/GlobalState';
 import {Keyword} from './Keyword';
 
 export const KeywordList = () => {
-  const {savedItems, getKeywordList} = useContext(GlobalContext);
+  const {instruction, savedItems, getKeywordList} = useContext(GlobalContext);
 
   useEffect(() => {
     getKeywordList();
@@ -13,7 +13,7 @@ export const KeywordList = () => {
 
   return (
     <div className='mt-4'>
-      <p>Click on keyword to see the latest videos</p>
+      <p>{instruction}</p>
 
       <div className={classes.list}>
         {savedItems.map(item =>

@@ -6,7 +6,9 @@ import axios from 'axios';
 const initialState = {
   savedItems: [],
   message: '',
-  displayedItem: {}
+  instruction: '',
+  displayedItem: {},
+  loading: true
 };
 
 export const GlobalContext = createContext(initialState);
@@ -23,7 +25,7 @@ export const GlobalProvider = ({children}) => {
 
       dispatch({
         type: 'GET_KEYWORDS',
-        payload: response.data.data
+        payload: response.data
       });
 
     } catch (error) {
@@ -71,8 +73,9 @@ export const GlobalProvider = ({children}) => {
         type: 'DISPLAY_VIDEOS',
         payload: {
           keyword: keyword,
-          videoIds: response.data.data
-        }
+          videoIds: response.data.data,
+        },
+        loading: false
       });
 
     } catch (error) {
@@ -83,15 +86,28 @@ export const GlobalProvider = ({children}) => {
     }
   }
 
+  function loadSpinner () {
+    dispatch({
+      type: 'LOADING',
+      payload: {
+        loading: true
+      }
+    });
+  }
+
+
   return (
     <GlobalContext.Provider
       value={{
         savedItems: state.savedItems,
         message: state.message,
+        instruction: state.instruction,
         displayedItem: state.displayedItem,
+        loading: state.loading,
         getKeywordList,
         addKeyword,
-        displayActiveItem
+        displayActiveItem,
+        loadSpinner
       }}>
       {children}
     </GlobalContext.Provider>

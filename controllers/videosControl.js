@@ -45,9 +45,11 @@ exports.getKeywordList = async (req, res, next) => {
   try {
     const keywords = await Keyword.find();
 
+
     return res.status(200).json({
       success: true,
-      data: keywords
+      data: keywords,
+      instruction: keywords.length === 0 ? 'Add keyword to see videos.' : 'Click on keyword to see the latest videos.'
     });
 
   } catch (error) {
@@ -76,7 +78,8 @@ exports.addKeyword = async (req, res, next) => {
     return res.status(201).json({
       success: true,
       data: keyword,
-      message: 'Keyword saved!'
+      message: 'Keyword saved!',
+      instruction: 'Click on keyword to see the latest videos.'
     });
 
   } catch (error) {
