@@ -21,7 +21,8 @@
 		"axios": "^0.21.1",
 		"concurrently": "^5.3.0",
 		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
+		"express": "*",
+		"body-parser": "*",
 		"googleapis": "^67.0.0",
 		"mongoose": "^5.11.15",
 		"nodemon": "^2.0.7"
