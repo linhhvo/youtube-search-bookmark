@@ -112,5 +112,3 @@ dist
 .pnp.js
 
 build/
-
-package-lock.json
